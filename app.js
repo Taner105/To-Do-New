@@ -37,6 +37,12 @@ todoButton.addEventListener("click", () => {
 window.addEventListener("load",()=>{
     getTodosToPage()
 })
+
+const removeTodo = (target) => {
+    const todo = target.parentNode.childNodes[0].innerHTML;
+    removeTodoFromStorage(todo);
+    target.parentNode.remove();
+}
 //1
 const createTodoItem = (text) => {
     const todoItem = document.createElement("div");
@@ -46,6 +52,8 @@ const createTodoItem = (text) => {
     const todoItemCheck = document.createElement("i");
     todoItemCheck.classList.add("fas", "fa-square");
     todoItemCheck.setAttribute("onclick", "checkTodo(this)");
+
+      
     const todoItemRemove = document.createElement("i");
     todoItemRemove.classList.add("fas", "fa-trash-alt");
     todoItemRemove.setAttribute("onclick", "removeTodo(this)");
